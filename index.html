@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: full;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    main {
+      min-height: 80vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .btn {
+      font-size: 0.875rem;
+      border: 2px solid var(--clr-black);
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+
+    }
+
+    section {
+      min-height: 40vh;
+      border: 2px solid whitesmoke;
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+
+    }
+
+    #Inc {
+      background-color: greenyellow;
+      color: white;
+    }
+
+    #Dec {
+      background-color: red;
+      color: white;
+    }
+
+    #ClearCashe {
+      background-color: green;
+      color: white;
+    }
+
+    #value {
+      font-size: 100px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section>
+      <header>
+        <h1>Counter</h1>
+      </header>
+      <span id="value">0</span>
+      <div>
+        <button class="btn" id="Inc" onclick="showIncDec(this, 'increase')">Increase</button>
+        <button class="btn" id="Dec" onclick="showIncDec(this, 'decrease')">Decrease</button>
+        <button class="btn" id="ClearCashe" onclick="clearCashe()">Clear Cashe</button>
+      </div>
+      </div>
+    </section>
+  </main>
+  <!-- <script src="counter.js"></script> -->
+  <script>
+    const txt_counter = document.getElementById("value");
+    let count = localStorage.getItem("key") || 0;
+    txt_counter.innerText = count;
+    showStyle(count);
+    function showIncDec(element, action) {
+      if (action == "increase") {
+        count++;
+        localStorage.setItem("count", count);
+      } else if (action == "decrease") {
+        count--;
+        localStorage.setItem("key", count);
+      } else {
+        count = 0;
+        localStorage.setItem("key", count);
+      }
+      localStorage.setItem("key", count);
+      txt_counter.innerText = count;
+      showStyle(count);
+    }
+    function clearCashe() {
+      count = 0;
+      localStorage.setItem("key", count);
+      txt_counter.innerText = count;
+      showStyle(count);
+    }
+    function showStyle(count) {
+      if (count > 0) {
+        txt_counter.style.color = "green";
+      } else if (count < 0) {
+        txt_counter.style.color = "red";
+      } else {
+        txt_counter.style.color = "white";
+      }
+    }
+  </script>
+  <footer>All right reserved by @ Ajoy</footer>
+</body>
+</html>
