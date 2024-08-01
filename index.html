@@ -34,15 +34,18 @@
         display: grid;
         place-items: center;
       }
+
       section {
         width: 350px;
       }
-      div{
+
+      div {
         width: 400px;
         align-items: center;
         align-content: center;
         text-align: center;
       }
+
       .btn {
         font-size: 0.875rem;
         border: 2px solid var(--clr-black);
@@ -102,6 +105,55 @@
       font-size: 100px;
       font-weight: 900;
     }
+
+    /* Grid Test */
+    .grid-container {
+      display: grid;
+      gap: 10px;
+      background-color: #808000;
+      padding: 10px;
+      grid-template-columns: auto auto auto auto;
+      width: 350px;
+    }
+
+    .grid-item {
+      background-color: rgba(237, 222, 222, 0.8);
+      text-align: center;
+      width: 50px;
+      height: 30px;
+      padding: 5px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .item-calculator{
+      grid-column: 1 / span 4;
+      grid-row: 1;
+      width: 340px;
+      height: 40px;
+      background-color: #808000;
+    }
+    .item-result-div {
+      grid-column: 1 / span 4;
+      background-color: #ebece8;
+      grid-row: 2;
+      width: 310px;
+      height: 40px;
+    }
+
+    label {
+      font-size: 20px;
+      color: black;
+    }
+
+    input {
+      height: 35px;
+      width: 300px;
+    }
+
+    #btn-submit {
+      height: 35px;
+      width: 100px;
+    }
   </style>
 </head>
 
@@ -119,6 +171,47 @@
       </div>
     </section>
   </main>
+  <!-- Grid Test -->
+  <div class="grid-container">
+    <!-- <div class="grid-item item1">
+      <form>
+        <div>
+          <label>Name:</label>
+          <input type="text" name="userName" />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input type="email" name="userEmail" />
+        </div>
+        <div>
+          <button id="btn-submit">Submit</button>
+        </div>
+      </form>
+    </div> -->
+    <div class="grid-item item-calculator">Calculator project work in progress...</div>
+    <div class="grid-item item-result-div" id="item-result_div" onclick="showResult('resultshow')"><label
+        id="lbl-txt"></label></div>
+    <div class="grid-item item-ac" id="item-ac" onclick="showResult('ac')">AC</div>
+    <div class="grid-item item-bracket" id="item-bracket" onclick="showResult('()')">()</div>
+    <div class="grid-item item-percent" id="item-percent" onclick="showResult('%')">%</div>
+    <div class="grid-item item-division" id="item-division" onclick="showResult('/')">/</div>
+    <div class="grid-item item-seven" id="item-seven" onclick="showResult('7')">7</div>
+    <div class="grid-item item-eight" id="item-eight" onclick="showResult('8')">8</div>
+    <div class="grid-item item-nine" id="item-nine" onclick="showResult('9')">9</div>
+    <div class="grid-item item-multiple" id="item-multiple" onclick="showResult('*')">*</div>
+    <div class="grid-item item-four" id="item-four" onclick="showResult('4')">4</div>
+    <div class="grid-item item-five" id="item-five" onclick="showResult('5')">5</div>
+    <div class="grid-item item-six" id="item-six" onclick="showResult('6')">6</div>
+    <div class="grid-item item-subtraction" id="item-subtraction" onclick="showResult('-')">-</div>
+    <div class="grid-item item-one" id="item-one" onclick="showResult('1')">1</div>
+    <div class="grid-item item-two" id="item-two" onclick="showResult('2')">2</div>
+    <div class="grid-item item-three" id="item-three" onclick="showResult('3')">3</div>
+    <div class="grid-item item-addition" id="item-addition" onclick="showResult('+')">+</div>
+    <div class="grid-item item-zero" id="item-zero" onclick="showResult('0')">0</div>
+    <div class="grid-item item-dot" id="item-dot" onclick="showResult('.')">.</div>
+    <div class="grid-item item-delete" id="item-delete" onclick="showResult('del')">Del</div>
+    <div class="grid-item item-result" id="item-result" onclick="showResult('result')">=</div>
+  </div>
   <!-- <script src="counter.js"></script> -->
   <script>
     const txt_counter = document.getElementById("value");
@@ -154,6 +247,82 @@
       } else {
         txt_counter.style.color = "white";
       }
+    }
+
+    // Calculator Logic
+    function showResult(value) {
+      let result_cal = 0;
+      const result_cal_btn = document.getElementById("item-result");
+      const lbl_txt = document.getElementById("lbl-txt");
+
+      switch (value) {
+        case "ac":
+          result_cal = 0;
+          console.log(result_cal);
+          break;
+        case "()":
+          result_cal = 0;
+          break;
+        case "%":
+          result_cal = lbl_txt % 100;
+          break;
+        case "/":
+          result_cal = value;
+          break;
+        case "7":
+          result_cal = value;
+          break;
+        case "8":
+          result_cal = value;
+          break;
+        case "9":
+          result_cal = value;
+          break;
+        case "*":
+          result_cal = value;
+          break;
+        case "4":
+          result_cal = value;
+          break;
+        case "5":
+          result_cal = value;
+          break;
+        case "6":
+          result_cal = value;
+          break;
+        case "-":
+          result_cal = value;
+          break;
+        case "1":
+          result_cal = value;
+          break;
+        case "2":
+          result_cal = value;
+          break;
+        case "3":
+          result_cal = value;
+          break;
+        case "+":
+          result_cal = value;
+          break;
+        case "0":
+          result_cal = value;
+          break;
+        case ".":
+          result_cal = value;
+          break;
+        case "del":
+          result_cal = value;
+          break;
+        case "result":
+          result_cal = value;
+          break;
+        default:
+          return;
+      }
+      console.log(result_cal);
+      lbl_txt.innerText = result_cal;
+
     }
   </script>
   <footer>All right reserved by @ Ajoy</footer>
